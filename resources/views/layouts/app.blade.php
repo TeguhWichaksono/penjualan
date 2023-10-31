@@ -29,7 +29,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-      >@include('layouts.sidebar')
+      @include('layouts.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->

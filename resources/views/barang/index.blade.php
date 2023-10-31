@@ -24,6 +24,7 @@
                     @php($no = 1)
                     @foreach ($barangs as $row)
 
+                    {{-- @dd($row) --}}
                     <tr>
                         <th>{{ $no++ }}</th>
                         <td>{{ $row->kode_barang }}</td>

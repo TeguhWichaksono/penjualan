@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\barangcontroller;
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\kategoricontroller;
 use Illuminate\Support\Facades\Route;
 
@@ -35,16 +36,15 @@ Route::get("/logout", [AuthController::class, 'logout'])->name("logout");
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', [dashboardController::class, 'barang']
+    )->name('dashboard');
 
     Route::controller(barangcontroller::class)->prefix('barang')->group(function () {
         Route::get('', 'index')->name('barang');
         Route::get('barang', 'tambah')->name('barang.tambah');
         Route::post('barang', 'simpan')->name('barang.tambah.simpan');
         Route::get('edit/{id}', 'edit')->name('barang.edit');
-        Route::post('edit/{id}', 'update')->name('barang.tambah.update');
+        Route::post('update', 'update')->name('barang.tambah.update');
         Route::get('hapus/{id}', 'hapus')->name('barang.hapus');
     });
 

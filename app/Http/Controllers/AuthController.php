@@ -42,14 +42,14 @@ class AuthController extends Controller
 
     public function loginAksi(Request $request)
     {
-        validator::make($request->all(),[
+        validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required'
         ])->validate();
 
-        if(!Auth::attempt($request->only('email', 'password'))){
+        if (!Auth::attempt($request->only('email', 'password'))) {
             throw ValidationException::withMessages([
-                'email'=>trans('auth.failed')
+                'email' => trans('auth.failed')
             ]);
         }
         $request->session()->regenerate();
@@ -57,12 +57,12 @@ class AuthController extends Controller
         return redirect()->route('dashboard');
     }
 
-        public function logout(Request $request)
-        {
-            Auth::guard('web')->logout();
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
 
-            $request->session()->invalidate();
+        $request->session()->invalidate();
 
-            return redirect('/login');
-        }
+        return redirect('/');
+    }
 }

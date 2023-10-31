@@ -20,12 +20,15 @@
                     <label for="nama_barang">Nama Barang</label>
                     <input type="text" class="form-control" id="nama_barang" name="nama_barang" >
                 </div>
-
                 <div class="from-group">
                     <label for="kategori_barang">Kategori Barang</label>
-                    <input type="text" class="form-control" id="kategori_barang" name="kategori_barang">
+                    <select name="kategori_barang" class="form-control" id="kategori_barang">
+                        <option value="">Pilih Kategori...</option>
+                        @foreach ($kategori as $row)
+                            <option value="{{ $row->id }}">{{ $row->nama }}</option>
+                        @endforeach
+                    </select>
                 </div>
-
                 <div class="from-group">
                     <label for="harga">Harga Barang</label>
                     <input type="number" class="form-control" id="harga" name="harga">
